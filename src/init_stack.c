@@ -6,11 +6,11 @@
 /*   By: ggalon <ggalon@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 00:37:29 by ggalon            #+#    #+#             */
-/*   Updated: 2023/12/06 00:37:29 by ggalon           ###   ########.fr       */
+/*   Updated: 2023/12/06 14:49:58 by ggalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../inc/push_swap.h"
 
 t_node	*find_last_node(t_node *stack)
 {

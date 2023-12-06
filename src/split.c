@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggalon <ggalon@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:53:45 by ggalon            #+#    #+#             */
-/*   Updated: 2023/11/11 18:33:07 by ggalon           ###   ########.fr       */
+/*   Updated: 2023/12/06 14:48:31 by ggalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../inc/push_swap.h"
 
-static void	ft_freearray(char **array, size_t size)
+static void	freearray(char **array, size_t size)
 {
 	size_t	i;
 
@@ -25,7 +25,7 @@ static void	ft_freearray(char **array, size_t size)
 	free(array);
 }
 
-static char	*ft_strndup(char const *src, size_t n)
+static char	*strndup(char const *src, size_t n)
 {
 	char	*dest;
 	size_t	i;
@@ -43,7 +43,7 @@ static char	*ft_strndup(char const *src, size_t n)
 	return (dest);
 }
 
-static size_t	ft_count_words(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
 	size_t	words;
 	size_t	i;
@@ -63,7 +63,7 @@ static size_t	ft_count_words(char const *s, char c)
 	return (words);
 }
 
-char	**ft_split(char const *s, char c)
+char	**split(char const *s, char c)
 {
 	size_t		i;
 	size_t		j;
@@ -73,7 +73,7 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	j = 0;
 	k = 1;
-	split_str = malloc(sizeof(char *) * (ft_count_words(s, c) + 2));
+	split_str = malloc(sizeof(char *) * (count_words(s, c) + 2));
 	if (!split_str || !s)
 		return (NULL);
 	while (i < ft_strlen(s))
@@ -82,9 +82,9 @@ char	**ft_split(char const *s, char c)
 			j++;
 		if (j != 0)
 		{
-			split_str[k] = ft_strndup(&s[i], j);
+			split_str[k] = strndup(&s[i], j);
 			if (!split_str[k++])
-				return (ft_freearray(split_str, k - 1), NULL);
+				return (freearray(split_str, k - 1), NULL);
 		}
 		i += j + 1;
 		j = 0;

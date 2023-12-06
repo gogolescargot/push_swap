@@ -1,49 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggalon <ggalon@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/06 06:19:19 by ggalon            #+#    #+#             */
-/*   Updated: 2023/12/06 06:19:19 by ggalon           ###   ########.fr       */
+/*   Created: 2023/12/06 07:45:35 by ggalon            #+#    #+#             */
+/*   Updated: 2023/12/06 14:35:42 by ggalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "../inc/push_swap.h"
 
-bool swap(t_node **stack)
+bool	rotate(t_node **stack)
 {
-	int temp;
+	t_node	*first;
+	t_node	*last;
+
 	if (!stack || !*stack || !(*stack)->next)
 		return (false);
-	temp = (*stack)->data;
-	(*stack)->data = (*stack)->next->data;
-	(*stack)->next->data = temp;
+	first = (*stack);
+	last = find_last_node(*stack);
+	*stack = (*stack)->next;
+	first->next = NULL;
+	first->prev = last;
+	last->next = first;
 	return (true);
 }
 
-void	sa(t_node **a, bool print)
+void	ra(t_node **a, bool print)
 {
-	swap(a);
+	rotate(a);
 	if (!print)
 		return ;
-	write(1, "sa\n", 3);
+	write(1, "ra\n", 3);
 }
 
-void	sb(t_node **a, bool print)
+void	rb(t_node **b, bool print)
 {
-	swap(a);
+	rotate(b);
 	if (!print)
 		return ;
-	write(1, "sb\n", 3);
+	write(1, "rb\n", 3);
 }
 
-void ss(t_node **a, t_node **b, bool print)
+void	rr(t_node **a, t_node **b, bool print)
 {
-	swap(a);
-	swap(b);
+	rotate(a);
+	rotate(b);
 	if (!print)
 		return ;
-	write(1, "ss\n", 3);
+	write(1, "rr\n", 3);
 }

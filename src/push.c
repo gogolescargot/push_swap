@@ -6,16 +6,16 @@
 /*   By: ggalon <ggalon@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 06:19:36 by ggalon            #+#    #+#             */
-/*   Updated: 2023/12/06 06:19:36 by ggalon           ###   ########.fr       */
+/*   Updated: 2023/12/06 14:35:42 by ggalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "../inc/push_swap.h"
 
 bool	push(t_node **src, t_node **dst)
 {
-	t_node *first;
-	t_node *second;
+	t_node	*first;
+	t_node	*second;
 
 	if (!src || !*src || !dst)
 		return (false);
@@ -25,7 +25,6 @@ bool	push(t_node **src, t_node **dst)
 	if (second)
 		second->prev = NULL;
 	*src = second;
-
 	if (!*dst)
 		*dst = first;
 	else

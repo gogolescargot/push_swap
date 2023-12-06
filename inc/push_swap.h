@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ../include/push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggalon <ggalon@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 23:26:05 by ggalon            #+#    #+#             */
-/*   Updated: 2023/12/05 23:26:05 by ggalon           ###   ########.fr       */
+/*   Updated: 2023/12/06 14:48:44 by ggalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdbool.h>
-# include "../ft_printf/ft_printf.h"
+# include "../lib/inc/libft.h"
 
 typedef struct s_node
 {
@@ -25,7 +25,7 @@ typedef struct s_node
 	struct s_node	*next;
 }				t_node;
 
-char	**ft_split(char const *s, char c);
+char	**split(char const *s, char c);
 long	atol(const char *nptr);
 void	ft_putstr_fd(char *s, int fd);
 
@@ -37,9 +37,9 @@ t_node	*init_stack(char **argv);
 int		stack_sorted(t_node *stack);
 size_t	stack_size(t_node *stack);
 
-void sort_three(t_node **stack);
+void	sort_three(t_node **stack);
 
-bool 	swap(t_node **head);
+bool	swap(t_node **head);
 void	sa(t_node **a, bool print);
 void	sb(t_node **a, bool print);
 void	ss(t_node **a, t_node **b, bool print);

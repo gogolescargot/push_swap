@@ -6,11 +6,11 @@
 /*   By: ggalon <ggalon@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 23:28:14 by ggalon            #+#    #+#             */
-/*   Updated: 2023/12/05 23:28:14 by ggalon           ###   ########.fr       */
+/*   Updated: 2023/12/06 14:50:21 by ggalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../inc/push_swap.h"
 
 int	main(int argc, char **argv)
 {
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (ft_putstr_fd("Error\n", 2), 1);
 	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
+		argv = split(argv[1], ' ');
 	if (check_syntax(argv))
 		return (ft_putstr_fd("Error\n", 2), 1);
 	a = init_stack(argv);

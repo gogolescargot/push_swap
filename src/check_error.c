@@ -6,11 +6,11 @@
 /*   By: ggalon <ggalon@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 01:09:49 by ggalon            #+#    #+#             */
-/*   Updated: 2023/12/06 01:09:49 by ggalon           ###   ########.fr       */
+/*   Updated: 2023/12/06 14:35:42 by ggalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../inc/push_swap.h"
 
 bool	check_syntax(char **argv)
 {
