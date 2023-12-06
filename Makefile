@@ -10,46 +10,69 @@
 #                                                                              #
 # **************************************************************************** #
 
+# DIRECTORIES ==================================================================
 
-NAME_LIB = push_swap.a
-NAME = push_swap
+LIBFT_DIR	= libft/
 
-LIBFT_DIR = lib/
-LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
+SRCS_DIR	= src/
 
-FUNC = atol check_error check_stack init_stack main push reverse_rotate rotate sort split swap
+OBJS_DIR	= obj/
 
-SRCS_DIR = src/
-SRCS = $(addsuffix .c, $(addprefix $(SRCS_DIR), $(FUNC)))
+INCL_DIR	= inc/
 
-OBJS_DIR = obj/
-OBJS = $(addsuffix .o, $(addprefix $(OBJS_DIR), $(FUNC)))
+# FILES ========================================================================
 
-INCL = inc/push_swap.h
+NAME	= push_swap
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+LIBFT	= $(LIBFT_DIR)libft.a
 
-all: $(NAME_LIB)
-	cd lib; make
+FUNC	= atol check_error check_stack \
+		  init_stack main push reverse_rotate \
+		  rotate sort split swap \
 
-$(NAME_LIB): $(OBJS) Makefile
-	ar -rcs $@ $(OBJS)
-	$(CC) $(CFLAGS) $(NAME_LIB) $(LIBFT) -o $(NAME)
+SRCS	= $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FUNC)))
+
+OBJS	= $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FUNC)))
+
+INCL	= $(INCL_DIR)push_swap.h
+
+# COMMANDS =====================================================================
+
+CC			= cc
+
+CC_FLAGS	= -Wall -Wextra -Werror
+
+AR			= ar
+
+AR_FLAGS	= -rc
+
+# RULES ========================================================================
+
+all: 
+	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) $(NAME)
+
+
+$(NAME): $(OBJS) Makefile
+	$(CC) $(CC_FLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(INCL) Makefile
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CC_FLAGS) -c $< -o $@
+
 
 clean:
+	$(MAKE) -C $(LIBFT_DIR) clean
 	rm -f $(OBJS)
-	cd lib; make clean;
+
 
 fclean:
+	$(MAKE) -C $(LIBFT_DIR) fclean
 	rm -f $(OBJS)
-	rm -f $(NAME_LIB)
 	rm -f $(NAME)
-	cd lib; make fclean
+
 
 re: fclean all
-	
+
+
 .PHONY: all clean fclean re

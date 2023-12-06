@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdbool.h>
-# include "../lib/inc/libft.h"
+# include "../libft/inc/libft.h"
 
 typedef struct s_node
 {
