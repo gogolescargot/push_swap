@@ -69,8 +69,8 @@ AR_FLAGS	=	-rc
 
 all:
 	@echo "\n${BIBlue}Compilation of Libft source files...${NC}"
-	@mkdir -p $(OBJS_DIR) $(OBJS_LIBFT_DIR) $(OBJS_PRINTF_DIR) $(OBJS_GNL_DIR) 
-	@$(MAKE) $(NAME)
+	@mkdir -p $(OBJS_DIR) $(OBJS_LIBFT_DIR) $(OBJS_PRINTF_DIR) $(OBJS_GNL_DIR)
+	@$(MAKE) --no-print-directory $(NAME)
 	@echo "\n${BIGreen}Libft Ready !${NC}"
 
 $(NAME): $(OBJS_LIBFT) $(OBJS_PRINTF) $(OBJS_GNL)

@@ -54,7 +54,7 @@ all:
 	@$(MAKE) --no-print-directory $(NAME)
 	@echo "\n${BIGreen}Project Ready !${NC}\n"
 
-$(NAME): $(OBJS) $(LIBFT) Makefile
+$(NAME): $(OBJS) $(LIBFT)
 	@echo "\n${BICyan}Creating the executable...${NC}"
 	$(CC) $(CC_FLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
