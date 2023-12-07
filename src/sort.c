@@ -28,4 +28,33 @@ void	sort_three(t_node **stack)
 		sort_three(stack);
 }
 
-void	big_sort(t_node **a, t_node **b);
+void	sort_five(t_node **a, t_node **b)
+{
+	if (stack_some_sorted(*a))
+	{
+		if (find_max_pos(*a) >= 2)
+			while (!stack_sorted(*a))
+				rra(a, true);
+		else
+			while (!stack_sorted(*a))
+				ra(a, true);
+		return ;
+	}
+	while (stack_size(*a) > 3)
+		pb(a, b, true);
+	sort_three(a);
+	if (stack_sorted(*b))
+		sb(b, true);
+	while (stack_size(*b) > 0)
+		pa(a, b, true);
+	if (find_max_pos(*a) <= 2)
+	return ;
+	while (!stack_sorted(*a))
+		{
+			print_stack(*a, *b);
+			rra(a, true);
+		}
+	else
+		while (!stack_sorted(*a))
+			ra(a, true);
+}

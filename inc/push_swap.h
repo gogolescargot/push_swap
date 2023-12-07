@@ -21,6 +21,8 @@
 typedef struct s_node
 {
 	int				data;
+	int				min;
+	int				max;
 	struct s_node	*prev;
 	struct s_node	*next;
 }				t_node;
@@ -33,11 +35,15 @@ bool	check_duplicate(t_node *stack, int n);
 bool	check_syntax(char **argv);
 
 t_node	*find_last_node(t_node *stack);
+int		find_max_pos(t_node *stack);
+t_node	*find_min(t_node *stack);
 t_node	*init_stack(char **argv);
 int		stack_sorted(t_node *stack);
 size_t	stack_size(t_node *stack);
 
 void	sort_three(t_node **stack);
+void	sort_five(t_node **a, t_node **b);
+void	big_sort(t_node **a, t_node **b);
 
 bool	swap(t_node **head);
 void	sa(t_node **a, bool print);
@@ -57,5 +63,9 @@ bool	reverse_rotate(t_node **stack);
 void	rra(t_node **a, bool print);
 void	rrb(t_node **a, bool print);
 void	rrr(t_node **a, t_node **b, bool print);
+
+int		stack_some_sorted(t_node *stack);
+
+void	print_stack(t_node *a, t_node *b);
 
 #endif

@@ -25,6 +25,35 @@ int	stack_sorted(t_node *stack)
 	return (1);
 }
 
+int	stack_some_sorted(t_node *stack)
+{
+	t_node	*start;
+	t_node	*current;
+
+	if (!stack)
+		return (-1);
+	start = find_min(stack);
+	if (!(start->next) && start->data < stack->data)
+		current = stack;
+	else if (start->next && start->data < start->next->data)
+		current = start->next;
+	else
+		return (0);
+	while (current != start)
+	{
+		if (!(current->next) && stack == start)
+			return (1);
+		if (!(current->next) && current->data < stack->data)
+				current = stack;
+		if (current->next == start)
+			return (1);
+		if (!(current->next) || current->data > current->next->data)
+			return (0);
+		current = current->next;
+	}
+	return (1);
+}
+
 size_t	stack_size(t_node *stack)
 {
 	size_t	n;

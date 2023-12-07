@@ -12,6 +12,32 @@
 
 #include "../inc/push_swap.h"
 
+void	print_stack(t_node *a, t_node *b)
+{
+	ft_printf("a  |  b\n=======\n");
+	while (1)
+	{	
+		if (a)
+			ft_printf("%d", a->data);
+		ft_printf("  |  ");
+		if (b)
+			ft_printf("%d", b->data);
+		ft_printf("\n");
+		if (a && a->next)
+			a = a->next;
+		else
+			a = NULL;
+		if (b && b->next)
+			b = b->next;
+		else
+			b = NULL;
+		if (!a && !b)
+			return ;
+	}
+}
+
+#include <stdio.h>
+
 int	main(int argc, char **argv)
 {
 	t_node	*a;
@@ -27,31 +53,19 @@ int	main(int argc, char **argv)
 	a = init_stack(argv);
 	if (!a)
 		return (ft_putstr_fd("Error\n", 2), 1);
-	ft_printf("\n======= EXEC =======\n");
 	if (!stack_sorted(a))
 	{
 		if (stack_size(a) == 2)
 			sa(&a, true);
 		else if (stack_size(a) == 3)
 			sort_three(&a);
-		// else
-			//sort turk
+		else if (stack_size(a) == 5 || stack_size(a) == 4)
+			sort_five(&a, &b);
 	}
 
 // DEBUG
 
-	ft_printf("======= ST A =======\n");
-	while (a)
-	{
-		ft_printf("%d\n", a->data);
-		a = a->next;
-	}
-	ft_printf("======= ST B =======\n");
-	while (b)
-	{
-		ft_printf("%d\n", b->data);
-		b = b->next;
-	}
+	print_stack(a, b);
 
 // END DEBUG
 

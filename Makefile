@@ -29,7 +29,7 @@ LIBFT	=	$(LIBFT_DIR)libft.a
 
 SRCS	=	atol.c check_error.c check_stack.c \
 			init_stack.c main.c push.c reverse_rotate.c \
-			rotate.c sort.c split.c swap.c \
+			rotate.c sort.c split.c swap.c find.c \
 
 OBJS	=	$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 

@@ -12,15 +12,6 @@
 
 #include "../inc/push_swap.h"
 
-t_node	*find_last_node(t_node *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack->next)
-		stack = stack->next;
-	return (stack);
-}
-
 void	append_node(int n, t_node **stack)
 {
 	t_node	*node;
