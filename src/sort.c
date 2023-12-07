@@ -42,14 +42,15 @@ void	sort_five(t_node **a, t_node **b)
 	}
 	while (stack_size(*a) > 3)
 		pb(a, b, true);
-	sort_three(a);
+	if (!stack_sorted(*a))
+		sort_three(a);
 	if (stack_sorted(*b))
 		sb(b, true);
 	while (stack_size(*b) > 0)
 		pa(a, b, true);
-	if (find_max_pos(*a) <= 2)
 	return ;
-	while (!stack_sorted(*a))
+	if (find_max_pos(*a) >= 2)
+		while (!stack_sorted(*a))
 		{
 			print_stack(*a, *b);
 			rra(a, true);
