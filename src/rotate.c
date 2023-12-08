@@ -23,7 +23,6 @@ bool	rotate(t_node **stack)
 	last = find_last_node(*stack);
 	*stack = (*stack)->next;
 	first->next = NULL;
-	first->prev = last;
 	last->next = first;
 	return (true);
 }

@@ -25,15 +25,11 @@ void	append_node(int n, t_node **stack)
 	node->next = NULL;
 	node->data = n;
 	if (!*stack)
-	{
 		*stack = node;
-		node->prev = NULL;
-	}
 	else
 	{
 		temp = find_last_node(*stack);
 		temp->next = node;
-		node->prev = temp;
 	}
 }
 

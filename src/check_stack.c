@@ -44,12 +44,11 @@ int	stack_some_sorted(t_node *stack)
 		if (!(current->next) && stack == start)
 			return (1);
 		if (!(current->next) && current->data < stack->data)
-				current = stack;
-		if (current->next == start)
-			return (1);
-		if (!(current->next) || current->data > current->next->data)
+			current = stack;
+		else if (!(current->next) || (current->data > current->next->data && current->next != start))
 			return (0);
-		current = current->next;
+		else
+			current = current->next;
 	}
 	return (1);
 }

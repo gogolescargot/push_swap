@@ -15,13 +15,13 @@
 bool	reverse_rotate(t_node **stack)
 {
 	t_node	*last;
+	t_node	*second_last;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return (false);
 	last = find_last_node(*stack);
-	last->prev->next = NULL;
-	last->prev = NULL;
-	(*stack)->prev = last;
+	second_last = find_second_last_node(*stack);
+	second_last->next = NULL;
 	last->next = *stack;
 	*stack = last;
 	return (true);

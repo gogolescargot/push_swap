@@ -16,12 +16,16 @@ void	print_stack(t_node *a, t_node *b)
 {
 	ft_printf("a  |  b\n=======\n");
 	while (1)
-	{	
+	{
 		if (a)
 			ft_printf("%d", a->data);
+		else
+			ft_printf(" ");
 		ft_printf("  |  ");
 		if (b)
 			ft_printf("%d", b->data);
+		else
+			ft_printf(" ");
 		ft_printf("\n");
 		if (a && a->next)
 			a = a->next;
@@ -32,11 +36,10 @@ void	print_stack(t_node *a, t_node *b)
 		else
 			b = NULL;
 		if (!a && !b)
-			return ;
+			break ;
 	}
+	ft_printf("\n\n");
 }
-
-#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -59,15 +62,10 @@ int	main(int argc, char **argv)
 			sa(&a, true);
 		else if (stack_size(a) == 3)
 			sort_three(&a);
-		else if (stack_size(a) == 5 || stack_size(a) == 4)
-			sort_five(&a, &b);
+		else if (stack_size(a) > 5)
+			sort_big(a, b);
+		else
+			sort_big(a, b);
 	}
-
-// DEBUG
-
-	print_stack(a, b);
-
-// END DEBUG
-
 	return (0);
 }

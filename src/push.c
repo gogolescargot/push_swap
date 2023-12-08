@@ -22,15 +22,12 @@ bool	push(t_node **src, t_node **dst)
 	first = (*src);
 	second = (*src)->next;
 	first->next = NULL;
-	if (second)
-		second->prev = NULL;
 	*src = second;
 	if (!*dst)
 		*dst = first;
 	else
 	{
 		first->next = *dst;
-		(*dst)->prev = first;
 		*dst = first;
 	}
 	return (true);
