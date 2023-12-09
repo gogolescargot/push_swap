@@ -45,7 +45,7 @@ AR			=	ar
 
 AR_FLAGS	=	-rc
 
-NORM		=	norminette.exe
+NORM		=	norminette
 
 # RULES ========================================================================
 
