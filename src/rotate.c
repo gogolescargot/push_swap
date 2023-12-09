@@ -12,22 +12,22 @@
 
 #include "../inc/push_swap.h"
 
-bool	rotate(t_node **stack)
+bool	rotate(t_list **stack)
 {
-	t_node	*first;
-	t_node	*last;
+	t_list	*first;
+	t_list	*last;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return (false);
 	first = (*stack);
-	last = find_last_node(*stack);
+	last = find_last_list(*stack);
 	*stack = (*stack)->next;
 	first->next = NULL;
 	last->next = first;
 	return (true);
 }
 
-void	ra(t_node **a, bool print)
+void	ra(t_list **a, bool print)
 {
 	rotate(a);
 	if (!print)
@@ -35,7 +35,7 @@ void	ra(t_node **a, bool print)
 	write(1, "ra\n", 3);
 }
 
-void	rb(t_node **b, bool print)
+void	rb(t_list **b, bool print)
 {
 	rotate(b);
 	if (!print)
@@ -43,7 +43,7 @@ void	rb(t_node **b, bool print)
 	write(1, "rb\n", 3);
 }
 
-void	rr(t_node **a, t_node **b, bool print)
+void	rr(t_list **a, t_list **b, bool print)
 {
 	rotate(a);
 	rotate(b);

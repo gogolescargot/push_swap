@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-void	print_stack(t_node *a, t_node *b)
+void	print_stack(t_list *a, t_list *b)
 {
 	ft_printf("a  |  b\n=======\n");
 	while (1)
@@ -43,11 +43,11 @@ void	print_stack(t_node *a, t_node *b)
 
 int	main(int argc, char **argv)
 {
-	t_node	*a;
-	t_node	*b;
+	t_list	*a;
+	t_list	*b;
 
 	b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
+	if (argc <= 1 || !argv || (argc == 2 && !argv[1][0]))
 		return (ft_putstr_fd("Error\n", 2), 1);
 	else if (argc == 2)
 		argv = split(argv[1], ' ');
@@ -62,8 +62,6 @@ int	main(int argc, char **argv)
 			sa(&a, true);
 		else if (stack_size(a) == 3)
 			sort_three(&a);
-		else if (stack_size(a) > 5)
-			sort_big(a, b);
 		else
 			sort_big(a, b);
 	}

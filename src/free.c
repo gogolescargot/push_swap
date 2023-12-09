@@ -1,49 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggalon <ggalon@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/06 01:09:49 by ggalon            #+#    #+#             */
-/*   Updated: 2023/12/06 14:35:42 by ggalon           ###   ########.fr       */
+/*   Created: 2023/12/09 09:15:59 by ggalon            #+#    #+#             */
+/*   Updated: 2023/12/09 09:15:59 by ggalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-bool	check_syntax(char **argv)
+void	free_stack(t_list *a, t_list *b)
 {
-	size_t	i;
-	size_t	j;
+	t_list	*current;
 
-	i = 1;
-	j = 0;
-	while (argv[i])
+	if (a)
 	{
-		if (argv[i][j] == '-' || argv[i][j] == '+')
-			j++;
-		while (argv[i][j])
+		current = a;
+		while (current)
 		{
-			if (argv[i][j] < '0' || argv[i][j] > '9')
-				return (true);
-			j++;
+			a = a->next;
+			free(current);
+			current = a;
 		}
-		j = 0;
-		i++;
 	}
-	return (false);
-}
-
-bool	check_duplicate(t_list *stack, int n)
-{
-	if (!stack)
-		return (0);
-	while (stack)
+	if (b)
 	{
-		if (stack->data == n)
-			return (true);
-		stack = stack->next;
+		current = b;
+		while (current)
+		{
+			b = b->next;
+			free(current);
+			current = b;
+		}
 	}
-	return (false);
 }

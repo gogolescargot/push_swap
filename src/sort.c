@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-void	sort_three(t_node **stack)
+void	sort_three(t_list **stack)
 {
 	if ((*stack)->data > (*stack)->next->data
 		&& (*stack)->data > (*stack)->next->next->data)
@@ -28,45 +28,18 @@ void	sort_three(t_node **stack)
 		sort_three(stack);
 }
 
-// void	sort_mid(t_node *a, t_node *b)
-// {
-// 	if (stack_some_sorted(a))
-// 	{
-// 		if (find_median(a, find_min(a)) == 1)
-// 			while (!stack_sorted(a))
-// 				ra(&a, true);
-// 		else
-// 			while (!stack_sorted(a))
-// 				rra(&a, true);
-// 		return ;
-// 	}
-// 	while (a != find_max(a) && stack_size(a) > 1)
-// 	{
-// 		if (find_median(a, find_min(a)) == 1)
-// 			while (find_min(a) != a)
-// 				ra(&a, true);
-// 		else
-// 			while (find_min(a) != a)
-// 				rra(&a, true);
-// 		pb(&a, &b, true);
-// 	}
-// 	while (stack_size(b) > 0)
-// 		pa(&a, &b, true);
-// 	print_stack(a, b);
-// }
-
-void	sort_big(t_node *a, t_node *b)
+void	sort_big(t_list *a, t_list *b)
 {
-	t_node	*current;
-	t_node	*target_a;
-	t_node	*target_b;
+	t_list	*current;
+	t_list	*target_a;
+	t_list	*target_b;
 	size_t	cost;
 
 	if (stack_some_sorted(a))
 	{
 		if (find_median(a, find_max(a)) == 1)
 			while (!stack_sorted(a))
-				ra(&a, false);
+				ra(&a, true);
 		else
 			while (!stack_sorted(a))
 				rra(&a, true);
@@ -90,23 +63,20 @@ void	sort_big(t_node *a, t_node *b)
 			}
 			current = current->next;
 		}
-		if (find_median(a, target_a) == 1 && find_median(b, target_b) == 1 && a != target_a && b != target_b)
-			rr(&a, &b, true);
-		else if (find_median(a, target_a) == -1 && find_median(b, target_b) == -1 && a != target_a && b != target_b)
-			rrr(&a, &b, true);
-		else
+		while (a != target_a || b != target_b)
 		{
-			while (a != target_a || b != target_b)
-			{
-				if (find_median(a, target_a) == 1 && a != target_a)
-					ra(&a, true);
-				else if (find_median(a, target_a) == -1 && a != target_a)
-					rra(&a, true);
-				if (find_median(b, target_b) == 1 && b != target_b)
-					rb(&b, true);
-				else if (find_median(b, target_b) == -1 && b != target_b)
-					rrb(&b, true);
-			}
+			if (find_median(a, target_a) == 1 && find_median(b, target_b) == 1 && a != target_a && b != target_b)
+				rr(&a, &b, true);
+			else if (find_median(a, target_a) == -1 && find_median(b, target_b) == -1 && a != target_a && b != target_b)
+				rrr(&a, &b, true);
+			else if (find_median(a, target_a) == 1 && a != target_a)
+				ra(&a, true);
+			else if (find_median(a, target_a) == -1 && a != target_a)
+				rra(&a, true);
+			else if (find_median(b, target_b) == 1 && b != target_b)
+				rb(&b, true);
+			else if (find_median(b, target_b) == -1 && b != target_b)
+				rrb(&b, true);
 		}
 		pb(&a, &b, true);
 	}
@@ -130,23 +100,20 @@ void	sort_big(t_node *a, t_node *b)
 			}
 			current = current->next;
 		}
-		if (find_median(a, target_a) == 1 && find_median(b, target_b) == 1 && a != target_a && b != target_b)
-			rr(&a, &b, true);
-		else if (find_median(a, target_a) == -1 && find_median(b, target_b) == -1 && a != target_a && b != target_b)
-			rrr(&a, &b, true);
-		else
+		while (a != target_a || b != target_b)
 		{
-			while (a != target_a || b != target_b)
-			{
-				if (find_median(a, target_a) == 1 && a != target_a)
-					ra(&a, true);
-				else if (find_median(a, target_a) == -1 && a != target_a)
-					rra(&a, true);
-				if (find_median(b, target_b) == 1 && b != target_b)
-					rb(&b, true);
-				else if (find_median(b, target_b) == -1 && b != target_b)
-					rrb(&b, true);
-			}
+			if (find_median(a, target_a) == 1 && find_median(b, target_b) == 1 && a != target_a && b != target_b)
+				rr(&a, &b, true);
+			else if (find_median(a, target_a) == -1 && find_median(b, target_b) == -1 && a != target_a && b != target_b)
+				rrr(&a, &b, true);
+			else if (find_median(a, target_a) == 1 && a != target_a)
+				ra(&a, true);
+			else if (find_median(a, target_a) == -1 && a != target_a)
+				rra(&a, true);
+			else if (find_median(b, target_b) == 1 && b != target_b)
+				rb(&b, true);
+			else if (find_median(b, target_b) == -1 && b != target_b)
+				rrb(&b, true);
 		}
 		pa(&a, &b, true);
 	}
@@ -159,5 +126,4 @@ void	sort_big(t_node *a, t_node *b)
 			while (!stack_sorted(a))
 				rra(&a, true);
 	}
-	print_stack(a, b);
 }

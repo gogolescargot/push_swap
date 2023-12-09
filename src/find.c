@@ -6,13 +6,13 @@
 /*   By: ggalon <ggalon@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:11:59 by ggalon            #+#    #+#             */
-/*   Updated: 2023/12/08 16:04:55 by ggalon           ###   ########.fr       */
+/*   Updated: 2023/12/09 09:16:50 by ggalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-t_node	*find_last_node(t_node *stack)
+t_list	*find_last_list(t_list *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -21,9 +21,9 @@ t_node	*find_last_node(t_node *stack)
 	return (stack);
 }
 
-t_node	*find_second_last_node(t_node *stack)
+t_list	*find_second_last_list(t_list *stack)
 {
-	t_node	*temp;
+	t_list	*temp;
 
 	if (!stack)
 		return (NULL);
@@ -36,10 +36,10 @@ t_node	*find_second_last_node(t_node *stack)
 	return (temp);
 }
 
-int	find_median(t_node *stack, t_node *node)
+int	find_median(t_list *stack, t_list *node)
 {
 	size_t	i;
-	t_node	*current;
+	t_list	*current;
 
 	if (!stack)
 		return (0);
@@ -56,10 +56,10 @@ int	find_median(t_node *stack, t_node *node)
 		return (-1);
 }
 
-t_node	*find_min(t_node *stack)
+t_list	*find_min(t_list *stack)
 {
 	int		min;
-	t_node	*min_node;
+	t_list	*min_node;
 
 	if (!stack)
 		return (0);
@@ -77,10 +77,10 @@ t_node	*find_min(t_node *stack)
 	return (min_node);
 }
 
-t_node	*find_max(t_node *stack)
+t_list	*find_max(t_list *stack)
 {
 	int		max;
-	t_node	*max_node;
+	t_list	*max_node;
 
 	if (!stack)
 		return (0);
@@ -98,10 +98,10 @@ t_node	*find_max(t_node *stack)
 	return (max_node);
 }
 
-t_node	*find_target(t_node *stack, t_node *node, bool mode)
+t_list	*find_target(t_list *stack, t_list *node, bool mode)
 {
-	t_node	*closest;
-	t_node	*current;
+	t_list	*closest;
+	t_list	*current;
 
 	closest = NULL;
 	current = stack;
@@ -123,7 +123,7 @@ t_node	*find_target(t_node *stack, t_node *node, bool mode)
 	{
 		if (node->data < current->data && !closest)
 			closest = current;
-		else if (node->data < current->data && closest && current->data - node->data < closest->data - node->data)
+		else if (node->data < current->data && current->data - node->data < closest->data - node->data)
 			closest = current;
 		current = current->next;
 	}
@@ -132,11 +132,11 @@ t_node	*find_target(t_node *stack, t_node *node, bool mode)
 	return (closest);
 }
 
-size_t	find_cost(t_node *a, t_node *b, t_node *target_a, t_node *target_b)
+size_t	find_cost(t_list *a, t_list *b, t_list *target_a, t_list *target_b)
 {
 	size_t	i;
 	size_t	j;
-	t_node	*current;
+	t_list	*current;
 
 	i = 0;
 	j = 0;
@@ -156,5 +156,11 @@ size_t	find_cost(t_node *a, t_node *b, t_node *target_a, t_node *target_b)
 		i = stack_size(a) - i;
 	if (find_median(b, target_b) == -1)
 		j = stack_size(b) - j;
+	if (find_median(a, target_a) == find_median(b, target_b) && i == j)
+		return (i / 2);
+	else if (find_median(a, target_a) == find_median(b, target_b) && i > j)
+		return (i);
+	else if (find_median(a, target_a) == find_median(b, target_b) && i < j)
+		return (j);
 	return (i + j);
 }

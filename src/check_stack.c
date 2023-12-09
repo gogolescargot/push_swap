@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-int	stack_sorted(t_node *stack)
+int	stack_sorted(t_list *stack)
 {
 	if (!stack)
 		return (-1);
@@ -25,10 +25,10 @@ int	stack_sorted(t_node *stack)
 	return (1);
 }
 
-int	stack_some_sorted(t_node *stack)
+int	stack_some_sorted(t_list *stack)
 {
-	t_node	*start;
-	t_node	*current;
+	t_list	*start;
+	t_list	*current;
 
 	if (!stack)
 		return (-1);
@@ -53,7 +53,7 @@ int	stack_some_sorted(t_node *stack)
 	return (1);
 }
 
-size_t	stack_size(t_node *stack)
+size_t	stack_size(t_list *stack)
 {
 	size_t	n;
 

@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-bool	swap(t_node **stack)
+bool	swap(t_list **stack)
 {
 	int	temp;
 
@@ -24,7 +24,7 @@ bool	swap(t_node **stack)
 	return (true);
 }
 
-void	sa(t_node **a, bool print)
+void	sa(t_list **a, bool print)
 {
 	swap(a);
 	if (!print)
@@ -32,7 +32,7 @@ void	sa(t_node **a, bool print)
 	write(1, "sa\n", 3);
 }
 
-void	sb(t_node **a, bool print)
+void	sb(t_list **a, bool print)
 {
 	swap(a);
 	if (!print)
@@ -40,7 +40,7 @@ void	sb(t_node **a, bool print)
 	write(1, "sb\n", 3);
 }
 
-void	ss(t_node **a, t_node **b, bool print)
+void	ss(t_list **a, t_list **b, bool print)
 {
 	swap(a);
 	swap(b);
