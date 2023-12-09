@@ -12,14 +12,14 @@
 
 #include "../inc/push_swap.h"
 
-void	append_node(int n, t_list **stack)
+void	append_node(int n, t_stack **stack)
 {
-	t_list	*node;
-	t_list	*temp;
+	t_stack	*node;
+	t_stack	*temp;
 
 	if (!stack)
 		return ;
-	node = malloc(sizeof(t_list));
+	node = malloc(sizeof(t_stack));
 	if (!node)
 		return ;
 	node->next = NULL;
@@ -28,16 +28,16 @@ void	append_node(int n, t_list **stack)
 		*stack = node;
 	else
 	{
-		temp = find_last_list(*stack);
+		temp = find_last_stack(*stack);
 		temp->next = node;
 	}
 }
 
-t_list	*init_stack(char **argv)
+t_stack	*init_stack(char **argv)
 {
 	long	n;
 	size_t	i;
-	t_list	*stack;
+	t_stack	*stack;
 
 	i = 1;
 	stack = NULL;

@@ -12,22 +12,22 @@
 
 #include "../inc/push_swap.h"
 
-bool	reverse_rotate(t_list **stack)
+bool	reverse_rotate(t_stack **stack)
 {
-	t_list	*last;
-	t_list	*second_last;
+	t_stack	*last;
+	t_stack	*second_last;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return (false);
-	last = find_last_list(*stack);
-	second_last = find_second_last_list(*stack);
+	last = find_last_stack(*stack);
+	second_last = find_second_last_stack(*stack);
 	second_last->next = NULL;
 	last->next = *stack;
 	*stack = last;
 	return (true);
 }
 
-void	rra(t_list **a, bool print)
+void	rra(t_stack **a, bool print)
 {
 	reverse_rotate(a);
 	if (!print)
@@ -35,7 +35,7 @@ void	rra(t_list **a, bool print)
 	write(1, "rra\n", 4);
 }
 
-void	rrb(t_list **b, bool print)
+void	rrb(t_stack **b, bool print)
 {
 	reverse_rotate(b);
 	if (!print)
@@ -43,7 +43,7 @@ void	rrb(t_list **b, bool print)
 	write(1, "rrb\n", 4);
 }
 
-void	rrr(t_list **a, t_list **b, bool print)
+void	rrr(t_stack **a, t_stack **b, bool print)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);

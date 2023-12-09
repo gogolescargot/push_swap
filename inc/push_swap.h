@@ -18,54 +18,54 @@
 # include <stdbool.h>
 # include "../libft/inc/libft.h"
 
-typedef struct s_list
+typedef struct s_stack
 {
 	int				data;
-	struct s_list	*next;
-}				t_list;
+	struct s_stack	*next;
+}				t_stack;
 
 char	**split(char const *s, char c);
 long	atol(const char *nptr);
 void	ft_putstr_fd(char *s, int fd);
 
-bool	check_duplicate(t_list *stack, int n);
+bool	check_duplicate(t_stack *stack, int n);
 bool	check_syntax(char **argv);
 
-t_list	*find_last_list(t_list *stack);
-t_list	*find_second_last_list(t_list *stack);
-int		find_median(t_list *stack, t_list *node);
-t_list	*find_target(t_list *stack, t_list *node, bool mode);
-size_t	find_cost(t_list *a, t_list *b, t_list *target_a, t_list *target_b);
-t_list	*find_min(t_list *stack);
-t_list	*find_max(t_list *stack);
-t_list	*init_stack(char **argv);
-int		stack_sorted(t_list *stack);
-size_t	stack_size(t_list *stack);
+t_stack	*find_last_stack(t_stack *stack);
+t_stack	*find_second_last_stack(t_stack *stack);
+int		find_median(t_stack *stack, t_stack *node);
+t_stack	*find_target(t_stack *stack, t_stack *node, bool mode);
+size_t	find_cost(t_stack *a, t_stack *b, t_stack *target_a, t_stack *target_b);
+t_stack	*find_min(t_stack *stack);
+t_stack	*find_max(t_stack *stack);
+t_stack	*init_stack(char **argv);
+int		stack_sorted(t_stack *stack);
+size_t	stack_size(t_stack *stack);
 
-void	sort_three(t_list **stack);
-void	sort_mid(t_list *a, t_list *b);
-void	sort_big(t_list *a, t_list *b);
+void	sort_three(t_stack **stack);
+void	sort_mid(t_stack *a, t_stack *b);
+void	sort_big(t_stack *a, t_stack *b);
 
-bool	swap(t_list **head);
-void	sa(t_list **a, bool print);
-void	sb(t_list **a, bool print);
-void	ss(t_list **a, t_list **b, bool print);
+bool	swap(t_stack **head);
+void	sa(t_stack **a, bool print);
+void	sb(t_stack **a, bool print);
+void	ss(t_stack **a, t_stack **b, bool print);
 
-bool	push(t_list **dst, t_list **src);
-void	pa(t_list **a, t_list **b, bool print);
-void	pb(t_list **a, t_list **b, bool print);
+bool	push(t_stack **dst, t_stack **src);
+void	pa(t_stack **a, t_stack **b, bool print);
+void	pb(t_stack **a, t_stack **b, bool print);
 
-bool	rotate(t_list **stack);
-void	ra(t_list **a, bool print);
-void	rb(t_list **a, bool print);
-void	rr(t_list **a, t_list **b, bool print);
+bool	rotate(t_stack **stack);
+void	ra(t_stack **a, bool print);
+void	rb(t_stack **a, bool print);
+void	rr(t_stack **a, t_stack **b, bool print);
 
-bool	reverse_rotate(t_list **stack);
-void	rra(t_list **a, bool print);
-void	rrb(t_list **a, bool print);
-void	rrr(t_list **a, t_list **b, bool print);
+bool	reverse_rotate(t_stack **stack);
+void	rra(t_stack **a, bool print);
+void	rrb(t_stack **a, bool print);
+void	rrr(t_stack **a, t_stack **b, bool print);
 
-int		stack_some_sorted(t_list *stack);
-void	print_stack(t_list *a, t_list *b);
+int		stack_some_sorted(t_stack *stack);
+void	print_stack(t_stack *a, t_stack *b);
 
 #endif

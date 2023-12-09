@@ -35,7 +35,7 @@ bool	check_syntax(char **argv)
 	return (false);
 }
 
-bool	check_duplicate(t_list *stack, int n)
+bool	check_duplicate(t_stack *stack, int n)
 {
 	if (!stack)
 		return (0);

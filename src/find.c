@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-t_list	*find_last_list(t_list *stack)
+t_stack	*find_last_stack(t_stack *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -21,9 +21,9 @@ t_list	*find_last_list(t_list *stack)
 	return (stack);
 }
 
-t_list	*find_second_last_list(t_list *stack)
+t_stack	*find_second_last_stack(t_stack *stack)
 {
-	t_list	*temp;
+	t_stack	*temp;
 
 	if (!stack)
 		return (NULL);
@@ -36,10 +36,10 @@ t_list	*find_second_last_list(t_list *stack)
 	return (temp);
 }
 
-int	find_median(t_list *stack, t_list *node)
+int	find_median(t_stack *stack, t_stack *node)
 {
 	size_t	i;
-	t_list	*current;
+	t_stack	*current;
 
 	if (!stack)
 		return (0);
@@ -56,10 +56,10 @@ int	find_median(t_list *stack, t_list *node)
 		return (-1);
 }
 
-t_list	*find_min(t_list *stack)
+t_stack	*find_min(t_stack *stack)
 {
 	int		min;
-	t_list	*min_node;
+	t_stack	*min_node;
 
 	if (!stack)
 		return (0);
@@ -77,10 +77,10 @@ t_list	*find_min(t_list *stack)
 	return (min_node);
 }
 
-t_list	*find_max(t_list *stack)
+t_stack	*find_max(t_stack *stack)
 {
 	int		max;
-	t_list	*max_node;
+	t_stack	*max_node;
 
 	if (!stack)
 		return (0);
@@ -98,10 +98,10 @@ t_list	*find_max(t_list *stack)
 	return (max_node);
 }
 
-t_list	*find_target(t_list *stack, t_list *node, bool mode)
+t_stack	*find_target(t_stack *stack, t_stack *node, bool mode)
 {
-	t_list	*closest;
-	t_list	*current;
+	t_stack	*closest;
+	t_stack	*current;
 
 	closest = NULL;
 	current = stack;
@@ -132,11 +132,11 @@ t_list	*find_target(t_list *stack, t_list *node, bool mode)
 	return (closest);
 }
 
-size_t	find_cost(t_list *a, t_list *b, t_list *target_a, t_list *target_b)
+size_t	find_cost(t_stack *a, t_stack *b, t_stack *target_a, t_stack *target_b)
 {
 	size_t	i;
 	size_t	j;
-	t_list	*current;
+	t_stack	*current;
 
 	i = 0;
 	j = 0;

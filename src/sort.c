@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-void	sort_three(t_list **stack)
+void	sort_three(t_stack **stack)
 {
 	if ((*stack)->data > (*stack)->next->data
 		&& (*stack)->data > (*stack)->next->next->data)
@@ -28,11 +28,11 @@ void	sort_three(t_list **stack)
 		sort_three(stack);
 }
 
-void	sort_big(t_list *a, t_list *b)
+void	sort_big(t_stack *a, t_stack *b)
 {
-	t_list	*current;
-	t_list	*target_a;
-	t_list	*target_b;
+	t_stack	*current;
+	t_stack	*target_a;
+	t_stack	*target_b;
 	size_t	cost;
 
 	if (stack_some_sorted(a))

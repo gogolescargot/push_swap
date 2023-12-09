@@ -12,10 +12,10 @@
 
 #include "../inc/push_swap.h"
 
-bool	push(t_list **src, t_list **dst)
+bool	push(t_stack **src, t_stack **dst)
 {
-	t_list	*first;
-	t_list	*second;
+	t_stack	*first;
+	t_stack	*second;
 
 	if (!src || !*src || !dst)
 		return (false);
@@ -33,7 +33,7 @@ bool	push(t_list **src, t_list **dst)
 	return (true);
 }
 
-void	pa(t_list **a, t_list **b, bool print)
+void	pa(t_stack **a, t_stack **b, bool print)
 {
 	push(b, a);
 	if (!print)
@@ -41,7 +41,7 @@ void	pa(t_list **a, t_list **b, bool print)
 	write(1, "pa\n", 3);
 }
 
-void	pb(t_list **a, t_list **b, bool print)
+void	pb(t_stack **a, t_stack **b, bool print)
 {
 	push(a, b);
 	if (!print)

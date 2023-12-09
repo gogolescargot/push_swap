@@ -45,9 +45,13 @@ AR			=	ar
 
 AR_FLAGS	=	-rc
 
+NORM		=	norminette.exe
+
 # RULES ========================================================================
 
 all:
+	@echo "\n${BIBlue}Checking Norminette...${NC}"
+	@$(NORM) | grep -q Error && $(NORM) | grep Error || echo "\n${BIGreen}Norminette OK !${NC}\n"
 	@$(MAKE) --no-print-directory -C $(LIBFT_DIR)
 	@mkdir -p $(OBJS_DIR)
 	@echo "\n${BIBlue}Compilation of project source files...${NC}"

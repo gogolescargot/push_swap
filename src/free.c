@@ -12,9 +12,9 @@
 
 #include "../inc/push_swap.h"
 
-void	free_stack(t_list *a, t_list *b)
+void	free_stack(t_stack *a, t_stack *b)
 {
-	t_list	*current;
+	t_stack	*current;
 
 	if (a)
 	{

@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-void	print_stack(t_list *a, t_list *b)
+void	print_stack(t_stack *a, t_stack *b)
 {
 	ft_printf("a  |  b\n=======\n");
 	while (1)
@@ -43,8 +43,8 @@ void	print_stack(t_list *a, t_list *b)
 
 int	main(int argc, char **argv)
 {
-	t_list	*a;
-	t_list	*b;
+	t_stack	*a;
+	t_stack	*b;
 
 	b = NULL;
 	if (argc <= 1 || !argv || (argc == 2 && !argv[1][0]))
