@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-void	free_stack(t_stack *a, t_stack *b)
+void	free_stack(t_stack *a)
 {
 	t_stack	*current;
 
@@ -26,14 +26,19 @@ void	free_stack(t_stack *a, t_stack *b)
 			current = a;
 		}
 	}
-	if (b)
+}
+
+void	free_argv(char **argv, int argc)
+{
+	size_t	i;
+
+	i = 1;
+	if (argc != 2)
+		return ;
+	while (argv[i])
 	{
-		current = b;
-		while (current)
-		{
-			b = b->next;
-			free(current);
-			current = b;
-		}
+		free(argv[i]);
+		i++;
 	}
+	free(argv);
 }

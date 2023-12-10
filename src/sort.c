@@ -12,23 +12,24 @@
 
 #include "../inc/push_swap.h"
 
-void	sort_three(t_stack **stack)
+t_stack	*sort_three(t_stack *stack)
 {
-	if ((*stack)->data > (*stack)->next->data
-		&& (*stack)->data > (*stack)->next->next->data)
-		ra(stack, true);
-	else if ((*stack)->data < (*stack)->next->data
-		&& (*stack)->data < (*stack)->next->next->data)
-		rra(stack, true);
-	else if ((*stack)->data > (*stack)->next->data)
-		sa(stack, true);
+	if (stack->data > stack->next->data
+		&& stack->data > stack->next->next->data)
+		ra(&stack, true);
+	else if (stack->data < stack->next->data
+		&& stack->data < stack->next->next->data)
+		rra(&stack, true);
+	else if (stack->data > stack->next->data)
+		sa(&stack, true);
 	else
-		rra(stack, true);
-	if (!stack_sorted(*stack))
-		sort_three(stack);
+		rra(&stack, true);
+	if (!stack_sorted(stack))
+		return (sort_three(stack));
+	return (stack);
 }
 
-void	sort_big(t_stack *a, t_stack *b)
+t_stack	*sort_big(t_stack *a, t_stack *b)
 {
 	t_stack	*current;
 	t_stack	*target_a;
@@ -43,7 +44,7 @@ void	sort_big(t_stack *a, t_stack *b)
 		else
 			while (!stack_sorted(a))
 				rra(&a, true);
-		return ;
+		return (a);
 	}
 	pb(&a, &b, true);
 	pb(&a, &b, true);
@@ -81,7 +82,7 @@ void	sort_big(t_stack *a, t_stack *b)
 		pb(&a, &b, true);
 	}
 	if (stack_size(a) == 3)
-		sort_three(&a);
+		a = sort_three(a);
 	else if (stack_size(a) == 2 && !stack_sorted(a))
 		sa(&a, true);
 	while (stack_size(b) > 0)
@@ -126,4 +127,5 @@ void	sort_big(t_stack *a, t_stack *b)
 			while (!stack_sorted(a))
 				rra(&a, true);
 	}
+	return (a);
 }

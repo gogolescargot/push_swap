@@ -38,13 +38,12 @@ t_stack	*find_target(t_stack *stack, t_stack *node, bool mode);
 size_t	find_cost(t_stack *a, t_stack *b, t_stack *target_a, t_stack *target_b);
 t_stack	*find_min(t_stack *stack);
 t_stack	*find_max(t_stack *stack);
-t_stack	*init_stack(char **argv);
+bool	init_stack(t_stack **stack, char **argv);
 int		stack_sorted(t_stack *stack);
 size_t	stack_size(t_stack *stack);
 
-void	sort_three(t_stack **stack);
-void	sort_mid(t_stack *a, t_stack *b);
-void	sort_big(t_stack *a, t_stack *b);
+t_stack	*sort_three(t_stack *stack);
+t_stack	*sort_big(t_stack *a, t_stack *b);
 
 bool	swap(t_stack **head);
 void	sa(t_stack **a, bool print);
@@ -66,6 +65,8 @@ void	rrb(t_stack **a, bool print);
 void	rrr(t_stack **a, t_stack **b, bool print);
 
 int		stack_some_sorted(t_stack *stack);
+void	free_stack(t_stack *a);
+void	free_argv(char **argv, int argc);
 void	print_stack(t_stack *a, t_stack *b);
 
 #endif

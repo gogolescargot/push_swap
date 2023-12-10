@@ -38,7 +38,7 @@ bool	check_syntax(char **argv)
 bool	check_duplicate(t_stack *stack, int n)
 {
 	if (!stack)
-		return (0);
+		return (false);
 	while (stack)
 	{
 		if (stack->data == n)

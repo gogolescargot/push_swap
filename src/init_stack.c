@@ -33,23 +33,19 @@ void	append_node(int n, t_stack **stack)
 	}
 }
 
-t_stack	*init_stack(char **argv)
+bool	init_stack(t_stack **stack, char **argv)
 {
 	long	n;
 	size_t	i;
-	t_stack	*stack;
 
 	i = 1;
-	stack = NULL;
 	while (argv[i])
 	{
 		n = atol(argv[i]);
-		if (n > INT_MAX || n < INT_MIN || check_duplicate(stack, (int)n))
-		{
-			return (NULL);
-		}
-		append_node(n, &stack);
+		if (n > INT_MAX || n < INT_MIN || check_duplicate(*stack, (int)n))
+			return (false);
+		append_node(n, stack);
 		i++;
 	}
-	return (stack);
+	return (true);
 }

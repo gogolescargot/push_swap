@@ -14,13 +14,14 @@
 
 bool	swap(t_stack **stack)
 {
-	int	temp;
+	t_stack	*temp;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return (false);
-	temp = (*stack)->data;
-	(*stack)->data = (*stack)->next->data;
-	(*stack)->next->data = temp;
+	temp = (*stack)->next;
+	(*stack)->next = temp->next;
+	temp->next = *stack;
+	*stack = temp;
 	return (true);
 }
 
