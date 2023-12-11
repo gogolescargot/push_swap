@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggalon <ggalon@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/06 01:09:49 by ggalon            #+#    #+#             */
-/*   Updated: 2023/12/06 14:35:42 by ggalon           ###   ########.fr       */
+/*   Created: 2023/12/06 01:24:29 by ggalon            #+#    #+#             */
+/*   Updated: 2023/12/06 18:55:31 by ggalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,18 @@ bool	check_syntax(char **argv)
 	{
 		if (argv[i][j] == '-' || argv[i][j] == '+')
 			j++;
+		if (!argv[i][j])
+			return (false);
 		while (argv[i][j])
 		{
 			if (argv[i][j] < '0' || argv[i][j] > '9')
-				return (true);
+				return (false);
 			j++;
 		}
 		j = 0;
 		i++;
 	}
-	return (false);
+	return (true);
 }
 
 bool	check_duplicate(t_stack *stack, int n)

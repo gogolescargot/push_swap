@@ -24,30 +24,34 @@ typedef struct s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-char	**split(char const *s, char c);
 long	atol(const char *nptr);
 void	ft_putstr_fd(char *s, int fd);
 
 bool	check_duplicate(t_stack *stack, int n);
 bool	check_syntax(char **argv);
 
-t_stack	*find_last_stack(t_stack *stack);
-t_stack	*find_second_last_stack(t_stack *stack);
-int		find_median(t_stack *stack, t_stack *node);
-t_stack	*find_target(t_stack *stack, t_stack *node, bool mode);
-size_t	find_cost(t_stack *a, t_stack *b, t_stack *target_a, t_stack *target_b);
-t_stack	*find_min(t_stack *stack);
-t_stack	*find_max(t_stack *stack);
+t_stack	*f_last(t_stack *stack);
+t_stack	*f_s_last(t_stack *stack);
+t_stack	*f_trg(t_stack *stack, t_stack *node, bool mode);
+t_stack	*f_trg_b(t_stack *stack, t_stack *node);
+t_stack	*f_trg_a(t_stack *stack, t_stack *node);
+t_stack	*f_min(t_stack *stack);
+t_stack	*f_max(t_stack *stack);
+size_t	f_cst(t_stack *a, t_stack *b, t_stack *target_a, t_stack *target_b);
+bool	f_med(t_stack *stack, t_stack *node);
+
 bool	init_stack(t_stack **stack, char **argv);
-int		stack_sorted(t_stack *stack);
+void	free_stack(t_stack *a, t_stack *b);
+bool	stack_sorted(t_stack *stack);
 size_t	stack_size(t_stack *stack);
+bool	stack_some_sorted(t_stack *stack);
 
 t_stack	*sort_three(t_stack *stack);
 t_stack	*sort_big(t_stack *a, t_stack *b);
 
 bool	swap(t_stack **head);
-void	sa(t_stack **a, bool print);
-void	sb(t_stack **a, bool print);
+void	sa(t_stack **a, t_stack **b, bool print);
+void	sb(t_stack **a, t_stack **b, bool print);
 void	ss(t_stack **a, t_stack **b, bool print);
 
 bool	push(t_stack **dst, t_stack **src);
@@ -55,18 +59,15 @@ void	pa(t_stack **a, t_stack **b, bool print);
 void	pb(t_stack **a, t_stack **b, bool print);
 
 bool	rotate(t_stack **stack);
-void	ra(t_stack **a, bool print);
-void	rb(t_stack **a, bool print);
+void	ra(t_stack **a, t_stack **b, bool print);
+void	rb(t_stack **a, t_stack **b, bool print);
 void	rr(t_stack **a, t_stack **b, bool print);
 
 bool	reverse_rotate(t_stack **stack);
-void	rra(t_stack **a, bool print);
-void	rrb(t_stack **a, bool print);
+void	rra(t_stack **a, t_stack **b, bool print);
+void	rrb(t_stack **a, t_stack **b, bool print);
 void	rrr(t_stack **a, t_stack **b, bool print);
 
-int		stack_some_sorted(t_stack *stack);
-void	free_stack(t_stack *a);
-void	free_argv(char **argv, int argc);
 void	print_stack(t_stack *a, t_stack *b);
 
 #endif

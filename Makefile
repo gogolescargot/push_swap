@@ -27,9 +27,8 @@ NAME	=	push_swap
 
 LIBFT	=	$(LIBFT_DIR)libft.a
 
-SRCS	=	atol.c check_error.c check_stack.c \
-			init_stack.c main.c push.c reverse_rotate.c \
-			rotate.c sort.c split.c swap.c find.c free.c \
+SRCS	=	error.c stack.c init.c main.c push.c reverse_rotate.c \
+			rotate.c sort.c swap.c find_1.c find_2.c \
 
 OBJS	=	$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
@@ -45,13 +44,13 @@ AR			=	ar
 
 AR_FLAGS	=	-rc
 
-NORM		=	norminette
+NORM		=	norminette $(SRCS_DIR) $(INCL_DIR)
 
 # RULES ========================================================================
 
 all:
 	@echo "\n${BIBlue}Checking Norminette...${NC}"
-	@$(NORM) | grep -q Error && $(NORM) | grep Error || echo "\n${BIGreen}Norminette OK !${NC}\n"
+	@$(NORM) | grep -q Error && $(NORM) | grep Error || echo "\n${BIGreen}Norminette OK !${NC}"
 	@$(MAKE) --no-print-directory -C $(LIBFT_DIR)
 	@mkdir -p $(OBJS_DIR)
 	@echo "\n${BIBlue}Compilation of project source files...${NC}"

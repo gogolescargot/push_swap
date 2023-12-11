@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack.c                                       :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggalon <ggalon@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,34 @@
 
 #include "../inc/push_swap.h"
 
-void	append_node(int n, t_stack **stack)
+long	atol(const char *nptr)
+{
+	size_t	i;
+	size_t	r;
+	int		s;
+
+	i = 0;
+	r = 0;
+	s = 1;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
+		i++;
+	if (nptr[i] == 45)
+	{
+		s = -1;
+		i++;
+	}
+	else if (nptr[i] == 43)
+		i++;
+	while (nptr[i] >= 48 && nptr[i] <= 57)
+	{
+		r = nptr[i++] - 48 + (r * 10);
+		if ((r > 2147483647 && s == 1) || (r > 2147483648 && s == -1))
+			return (2147483649);
+	}
+	return (r * s);
+}
+
+static void	append_node(int n, t_stack **stack)
 {
 	t_stack	*node;
 	t_stack	*temp;
@@ -28,7 +55,7 @@ void	append_node(int n, t_stack **stack)
 		*stack = node;
 	else
 	{
-		temp = find_last_stack(*stack);
+		temp = f_last(*stack);
 		temp->next = node;
 	}
 }

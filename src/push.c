@@ -38,7 +38,8 @@ void	pa(t_stack **a, t_stack **b, bool print)
 	push(b, a);
 	if (!print)
 		return ;
-	write(1, "pa\n", 3);
+	if (write(1, "pa\n", 3) < 3)
+		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }
 
 void	pb(t_stack **a, t_stack **b, bool print)
@@ -46,5 +47,6 @@ void	pb(t_stack **a, t_stack **b, bool print)
 	push(a, b);
 	if (!print)
 		return ;
-	write(1, "pb\n", 3);
+	if (write(1, "pb\n", 3) < 3)
+		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }

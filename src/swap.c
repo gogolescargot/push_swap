@@ -25,20 +25,22 @@ bool	swap(t_stack **stack)
 	return (true);
 }
 
-void	sa(t_stack **a, bool print)
+void	sa(t_stack **a, t_stack **b, bool print)
 {
 	swap(a);
 	if (!print)
 		return ;
-	write(1, "sa\n", 3);
+	if (write(1, "sa\n", 3) < 3)
+		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }
 
-void	sb(t_stack **a, bool print)
+void	sb(t_stack **a, t_stack **b, bool print)
 {
 	swap(a);
 	if (!print)
 		return ;
-	write(1, "sb\n", 3);
+	if (write(1, "sb\n", 3) < 3)
+		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }
 
 void	ss(t_stack **a, t_stack **b, bool print)
@@ -47,5 +49,6 @@ void	ss(t_stack **a, t_stack **b, bool print)
 	swap(b);
 	if (!print)
 		return ;
-	write(1, "ss\n", 3);
+	if (write(1, "ss\n", 3) < 3)
+		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }

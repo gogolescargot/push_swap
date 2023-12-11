@@ -20,27 +20,29 @@ bool	rotate(t_stack **stack)
 	if (!stack || !*stack || !(*stack)->next)
 		return (false);
 	first = (*stack);
-	last = find_last_stack(*stack);
+	last = f_last(*stack);
 	*stack = (*stack)->next;
 	first->next = NULL;
 	last->next = first;
 	return (true);
 }
 
-void	ra(t_stack **a, bool print)
+void	ra(t_stack **a, t_stack **b, bool print)
 {
 	rotate(a);
 	if (!print)
 		return ;
-	write(1, "ra\n", 3);
+	if (write(1, "ra\n", 3) < 3)
+		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }
 
-void	rb(t_stack **b, bool print)
+void	rb(t_stack **a, t_stack **b, bool print)
 {
 	rotate(b);
 	if (!print)
 		return ;
-	write(1, "rb\n", 3);
+	if (write(1, "rb\n", 3) < 3)
+		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }
 
 void	rr(t_stack **a, t_stack **b, bool print)
@@ -49,5 +51,6 @@ void	rr(t_stack **a, t_stack **b, bool print)
 	rotate(b);
 	if (!print)
 		return ;
-	write(1, "rr\n", 3);
+	if (write(1, "rr\n", 3) < 3)
+		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }

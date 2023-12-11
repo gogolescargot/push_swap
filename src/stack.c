@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_stack.c                                      :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggalon <ggalon@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,45 +12,46 @@
 
 #include "../inc/push_swap.h"
 
-int	stack_sorted(t_stack *stack)
+bool	stack_sorted(t_stack *stack)
 {
 	if (!stack)
-		return (-1);
+		return (false);
 	while (stack->next)
 	{
 		if (stack->data > stack->next->data)
-			return (0);
+			return (false);
 		stack = stack->next;
 	}
-	return (1);
+	return (true);
 }
 
-int	stack_some_sorted(t_stack *stack)
+bool	stack_some_sorted(t_stack *stack)
 {
 	t_stack	*start;
 	t_stack	*current;
 
 	if (!stack)
-		return (-1);
-	start = find_min(stack);
+		return (false);
+	start = f_min(stack);
 	if (!(start->next) && start->data < stack->data)
 		current = stack;
 	else if (start->next && start->data < start->next->data)
 		current = start->next;
 	else
-		return (0);
+		return (false);
 	while (current != start)
 	{
 		if (!(current->next) && stack == start)
-			return (1);
+			return (true);
 		if (!(current->next) && current->data < stack->data)
 			current = stack;
-		else if (!(current->next) || (current->data > current->next->data && current->next != start))
-			return (0);
+		else if (!(current->next)
+			|| (current->data > current->next->data && current->next != start))
+			return (false);
 		else
 			current = current->next;
 	}
-	return (1);
+	return (true);
 }
 
 size_t	stack_size(t_stack *stack)
@@ -64,4 +65,30 @@ size_t	stack_size(t_stack *stack)
 		stack = stack->next;
 	}
 	return (n);
+}
+
+void	free_stack(t_stack *a, t_stack *b)
+{
+	t_stack	*current;
+
+	if (a)
+	{
+		current = a;
+		while (current)
+		{
+			a = a->next;
+			free(current);
+			current = a;
+		}
+	}
+	if (b)
+	{
+		current = b;
+		while (current)
+		{
+			b = b->next;
+			free(current);
+			current = b;
+		}
+	}
 }
