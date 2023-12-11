@@ -12,35 +12,6 @@
 
 #include "../inc/push_swap.h"
 
-void	print_stack(t_stack *a, t_stack *b)
-{
-	ft_printf("a  |  b\n=======\n");
-	while (1)
-	{
-		if (a)
-			ft_printf("%d", a->data);
-		else
-			ft_printf(" ");
-		ft_printf("  |  ");
-		if (b)
-			ft_printf("%d", b->data);
-		else
-			ft_printf(" ");
-		ft_printf("\n");
-		if (a && a->next)
-			a = a->next;
-		else
-			a = NULL;
-		if (b && b->next)
-			b = b->next;
-		else
-			b = NULL;
-		if (!a && !b)
-			break ;
-	}
-	ft_printf("\n\n");
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	*a;

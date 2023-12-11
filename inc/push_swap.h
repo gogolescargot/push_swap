@@ -49,14 +49,14 @@ bool	stack_some_sorted(t_stack *stack);
 t_stack	*sort_three(t_stack *stack);
 t_stack	*sort_big(t_stack *a, t_stack *b);
 
+bool	push(t_stack **dst, t_stack **src);
+void	pa(t_stack **a, t_stack **b, bool print);
+void	pb(t_stack **a, t_stack **b, bool print);
+
 bool	swap(t_stack **head);
 void	sa(t_stack **a, t_stack **b, bool print);
 void	sb(t_stack **a, t_stack **b, bool print);
 void	ss(t_stack **a, t_stack **b, bool print);
-
-bool	push(t_stack **dst, t_stack **src);
-void	pa(t_stack **a, t_stack **b, bool print);
-void	pb(t_stack **a, t_stack **b, bool print);
 
 bool	rotate(t_stack **stack);
 void	ra(t_stack **a, t_stack **b, bool print);
@@ -67,7 +67,5 @@ bool	reverse_rotate(t_stack **stack);
 void	rra(t_stack **a, t_stack **b, bool print);
 void	rrb(t_stack **a, t_stack **b, bool print);
 void	rrr(t_stack **a, t_stack **b, bool print);
-
-void	print_stack(t_stack *a, t_stack *b);
 
 #endif
