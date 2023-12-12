@@ -28,6 +28,7 @@ char	*ft_get_line(char **stash);
 char	*ft_check_last(char **stash, char **buffer);
 void	ft_update_stash(char **stash, char **buffer);
 void	ft_clear_stash(char **stash);
+void	ft_clear_all_stash(char **stash);
 
 long	ft_findnline(const char *s);
 char	*ft_strndup(char *src, size_t start, size_t end);

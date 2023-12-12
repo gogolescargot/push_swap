@@ -48,3 +48,17 @@ char	*ft_strndup(char *src, size_t start, size_t end)
 	dest[i] = 0;
 	return (dest);
 }
+
+void	ft_clear_all_stash(char **stash)
+{
+	int	i = 0;
+
+	while (i < 1024)
+	{
+		if (stash[i])
+			free(stash[i]);
+		stash[i] = NULL;
+		i++;
+	}
+	return ;
+}

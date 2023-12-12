@@ -64,7 +64,7 @@ char	*get_next_line(int fd)
 
 	buffer = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, buffer, 0) < 0)
-		return (ft_clear_stash(&stash[fd]), NULL);
+		return (ft_clear_all_stash(stash), NULL);
 	while (ft_findnline(stash[fd]) == -1)
 	{
 		buffer = ft_calloc((BUFFER_SIZE + 1), sizeof(char));

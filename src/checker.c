@@ -6,7 +6,7 @@
 /*   By: ggalon <ggalon@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:22:13 by ggalon            #+#    #+#             */
-/*   Updated: 2023/12/12 16:24:34 by ggalon           ###   ########.fr       */
+/*   Updated: 2023/12/12 19:43:39 by ggalon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ int	main(int argc, char **argv)
 		if (!move)
 			break ;
 		if (!call_functions(move, &a, &b))
-			(ft_putstr_fd("Error\n", 2), free(move), free_stack(a, b), exit(1));
+			(ft_putstr_fd("Error\n", 2), free(move),
+				free_stack(a, b), get_next_line(-1), exit(1));
 		free(move);
 	}
 	check_end(a, b, move);
