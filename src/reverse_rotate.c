@@ -32,7 +32,7 @@ void	rra(t_stack **a, t_stack **b, bool print)
 	reverse_rotate(a);
 	if (!print)
 		return ;
-	if (write(1, "rra\n", 4) < 4)
+	if (ft_printf("rra\n") < 4)
 		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }
 
@@ -41,7 +41,7 @@ void	rrb(t_stack **a, t_stack **b, bool print)
 	reverse_rotate(b);
 	if (!print)
 		return ;
-	if (write(1, "rrb\n", 4) < 4)
+	if (ft_printf("rrb\n") < 4)
 		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }
 
@@ -51,6 +51,6 @@ void	rrr(t_stack **a, t_stack **b, bool print)
 	reverse_rotate(b);
 	if (!print)
 		return ;
-	if (write(1, "rrr\n", 4) < 4)
+	if (ft_printf("rrr\n") < 4)
 		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }

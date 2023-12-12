@@ -29,6 +29,7 @@ void	ft_putstr_fd(char *s, int fd);
 
 bool	check_duplicate(t_stack *stack, int n);
 bool	check_syntax(char **argv);
+void	check_end(t_stack *a, t_stack *b, char *move);
 
 t_stack	*f_last(t_stack *stack);
 t_stack	*f_s_last(t_stack *stack);

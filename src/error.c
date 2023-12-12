@@ -49,3 +49,19 @@ bool	check_duplicate(t_stack *stack, int n)
 	}
 	return (false);
 }
+
+void	check_end(t_stack *a, t_stack *b, char *move)
+{
+	if (stack_sorted(a) && !b)
+	{
+		if (ft_printf("OK\n") < 3)
+			ft_putstr_fd("Error\n", 2);
+	}
+	else
+	{
+		if (ft_printf("KO\n") < 3)
+			ft_putstr_fd("Error\n", 2);
+	}
+	free(move);
+	free_stack(a, b);
+}

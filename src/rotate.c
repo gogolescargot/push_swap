@@ -32,7 +32,7 @@ void	ra(t_stack **a, t_stack **b, bool print)
 	rotate(a);
 	if (!print)
 		return ;
-	if (write(1, "ra\n", 3) < 3)
+	if (ft_printf("ra\n") < 3)
 		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }
 
@@ -41,7 +41,7 @@ void	rb(t_stack **a, t_stack **b, bool print)
 	rotate(b);
 	if (!print)
 		return ;
-	if (write(1, "rb\n", 3) < 3)
+	if (ft_printf("rb\n") < 3)
 		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }
 
@@ -51,6 +51,6 @@ void	rr(t_stack **a, t_stack **b, bool print)
 	rotate(b);
 	if (!print)
 		return ;
-	if (write(1, "rr\n", 3) < 3)
+	if (ft_printf("rr\n") < 3)
 		(free_stack(*a, *b), ft_putstr_fd("Error\n", 2), exit(1));
 }

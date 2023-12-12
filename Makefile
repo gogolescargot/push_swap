@@ -25,12 +25,19 @@ INCL_DIR	=	inc/
 
 NAME	=	push_swap
 
+NAME_B	=	checker
+
 LIBFT	=	$(LIBFT_DIR)libft.a
 
 SRCS	=	error.c stack.c init.c main.c push.c reverse_rotate.c \
 			rotate.c sort.c swap.c find_1.c find_2.c \
 
+SRCS_B	=	error.c stack.c init.c checker.c push.c reverse_rotate.c \
+			rotate.c swap.c find_1.c \
+
 OBJS	=	$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+
+OBJS_B	=	$(addprefix $(OBJS_DIR), $(SRCS_B:.c=.o))
 
 INCL	=	$(INCL_DIR)push_swap.h
 
@@ -60,6 +67,9 @@ all:
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "\n${BICyan}Creating the executable...${NC}"
 	$(CC) $(CC_FLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	
+bonus:
+	@$(MAKE) --no-print-directory NAME="$(NAME_B)" SRCS="$(SRCS_B)"
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(INCL) Makefile
 	$(CC) $(CC_FLAGS) -c $< -o $@
@@ -73,11 +83,11 @@ fclean:
 	@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
 	@echo "\n${BIRed}Project deletion...${NC}"
 	rm -rf $(OBJS_DIR)
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME_B)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 
 # COLORS =======================================================================
 
