@@ -100,7 +100,7 @@ size_t	f_cst(t_stack *a, t_stack *b, t_stack *target_a, t_stack *target_b)
 	if (!f_med(b, target_b))
 		j = stack_size(b) - j;
 	if (f_med(a, target_a) == f_med(b, target_b) && i == j)
-		return (i / 2);
+		return (i);
 	else if (f_med(a, target_a) == f_med(b, target_b) && i > j)
 		return (i);
 	else if (f_med(a, target_a) == f_med(b, target_b) && i < j)
