@@ -8,3 +8,27 @@ types of algorithms and choose the most appropriate solution (out of many) for a
 optimized data sorting.
 
 #### Grade : 125/100
+
+---
+
+### How to run :
+
+```bash
+# Compile
+make
+
+# Compile checker
+make bonus
+
+# Delete Objects files
+make clean
+
+# Clean and Delete Executable file
+make fclean
+
+# Full Clean and Recompile
+make re
+
+# Start (1 argument, Positive Number List)
+./so_long "3 1 2 4 5"
+```
